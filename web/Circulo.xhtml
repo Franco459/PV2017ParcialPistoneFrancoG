@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlCirculo" header="Circulo">
+            <h:form id="frmCirculo">
+                <p:panelGrid id="tblBoton" columns="3">
+                    <p:inputText id="txtRad" value="#{circuloFormBean.radio}" required="true"/>
+                    <p:commandButton id="btnAgregarCirculo"
+                                     value="Agregar"
+                                     actionListener="#{circuloFormBean.agregarCirculo()}"
+                                     update="tblMuestraCirculo"/>
+                    
+                </p:panelGrid>
+                <p:panelGrid id="tblMuestraCirculo" columns="3">
+                    <p:dataTable id="dtTblCirculo"
+                                 value="#{circuloFormBean.circ.circ}"
+                                 var="cadaCirculo"
+                                 emptyMessage="No hay circulos almacenados">
+                        <p:column headerText="Radio">
+                            <p:outputLabel value="#{cadaCirculo.radio}"/>
+                        </p:column>
+                        <p:column headerText="Perimetro">
+                            <p:outputLabel value="#{cadaCirculo.per}"/>
+                        </p:column>
+                        <p:column headerText="Superficie">
+                            <p:outputLabel value="#{cadaCirculo.sup}"/>
+                        </p:column>
+                </p:dataTable>
+                </p:panelGrid>
+            </h:form>      
+        </p:panel>
+    </h:body>
+</html>
+
